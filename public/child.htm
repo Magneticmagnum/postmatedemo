@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<script src='http://localhost:8080/postmate.dev.js'>
+
+</script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Child.htm</title>
+</head>
+
+<body>
+  <div>Child.htm</div>
+</body>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function (event) {
+
+    const handshake = new Postmate.Model({
+      // Expose your model to the Parent. Property values may be functions, promises, or regular values
+      height: () => document.height || document.body.offsetHeight
+    });
+
+    // When parent <-> child handshake is complete, events may be emitted to the parent
+    handshake.then(parent => {
+      parent.emit('some-event', 'Hello, World!');
+    });
+
+    Postmate.debug = true;
+  })
+</script>
+
+</html>

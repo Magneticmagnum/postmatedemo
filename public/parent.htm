@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<script src="postmate.min.js">
+
+</script>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>parent.htm</title>
+</head>
+
+<body>
+
+  <div>parent.htm</div>
+  <div id='some-div'></div>
+</body>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    //do work
+    new Postmate({
+      container: document.body,
+      url: 'http://localhost:8080/child.htm/',
+      model: { foo: 'bar' }
+    });
+
+    Postmate.debug = true;
+  });
+
+</script>
+<!DOCTYPE html>
+<html>
